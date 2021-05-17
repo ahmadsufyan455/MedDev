@@ -8,4 +8,6 @@
     <string name="password_hint">Password</string>
     <string name="register_label">Register</string>
     <string name="has_account_q">Don\'t have an account?</string>
+    <string name="username_hint">Username</string>
+    <string name="have_an_account">Have an account ?</string>
 </resources>

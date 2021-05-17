@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "755001834090",
+    "project_id": "meddev-cbad4",
+    "storage_bucket": "meddev-cbad4.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:755001834090:android:7b7333bf03847f32792813",
+        "android_client_info": {
+          "package_name": "com.capstone.meddev"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "755001834090-shb2081ti0n9sersiu223s8hiug59oi8.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyA_E0hDkjD5y9ooEJvWHOcHArP5CBsup5w"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "755001834090-shb2081ti0n9sersiu223s8hiug59oi8.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

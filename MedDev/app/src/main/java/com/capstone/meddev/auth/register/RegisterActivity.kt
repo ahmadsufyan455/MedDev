@@ -1,9 +1,11 @@
 package com.capstone.meddev.auth.register
 
+import android.content.Intent
 import android.os.Bundle
 import android.util.Log
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
+import com.capstone.meddev.auth.login.LoginActivity
 import com.capstone.meddev.data.User
 import com.capstone.meddev.databinding.ActivityRegisterBinding
 import com.google.firebase.auth.FirebaseAuth
@@ -25,6 +27,11 @@ class RegisterActivity : AppCompatActivity() {
 
         binding.registerBtn.setOnClickListener {
             register()
+        }
+
+        binding.loginTxt.setOnClickListener {
+            moveToLoginActivity()
+            finishAffinity()
         }
     }
 
@@ -70,11 +77,17 @@ class RegisterActivity : AppCompatActivity() {
                                     Log.w("RegisterActivity", "Error writing document", e)
                                 }
                             Toast.makeText(this, "Register successfully!", Toast.LENGTH_LONG).show()
+                            moveToLoginActivity()
                         } else {
                             Toast.makeText(this, "Register failed!", Toast.LENGTH_LONG).show()
                         }
                     }
             }
         }
+    }
+
+    private fun moveToLoginActivity() {
+        val intent = Intent(this, LoginActivity::class.java)
+        startActivity(intent)
     }
 }

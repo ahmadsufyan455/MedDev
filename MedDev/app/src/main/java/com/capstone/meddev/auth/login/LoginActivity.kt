@@ -5,6 +5,7 @@ import android.os.Bundle
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.capstone.meddev.auth.register.RegisterActivity
+import com.capstone.meddev.dashboard.DashboardActivity
 import com.capstone.meddev.databinding.ActivityLoginBinding
 import com.google.firebase.auth.FirebaseAuth
 
@@ -20,21 +21,21 @@ class LoginActivity : AppCompatActivity() {
 
         auth = FirebaseAuth.getInstance()
 
-        binding.loginBtn.setOnClickListener{
+        binding.loginBtn.setOnClickListener {
             login()
         }
 
-        binding.signUpTb.setOnClickListener{
+        binding.signUpTb.setOnClickListener {
             moveToRegisterActivity()
         }
     }
 
-    private fun moveToRegisterActivity(){
+    private fun moveToRegisterActivity() {
         val intent = Intent(this, RegisterActivity::class.java)
         startActivity(intent)
     }
 
-    private fun login(){
+    private fun login() {
 
         val email = binding.emailTxt.text.toString()
         val password = binding.passwordTxt.text.toString()
@@ -53,17 +54,22 @@ class LoginActivity : AppCompatActivity() {
                 binding.passwordTxt.requestFocus()
             }
             else -> {
-                auth.signInWithEmailAndPassword(email, password).addOnCompleteListener(this) { task ->
-                    if (task.isSuccessful) {
-                        Toast.makeText(this, "Successfully Logged In", Toast.LENGTH_LONG).show()
-//                val intent = Intent(this, MainActivity::class.java)
-//                startActivity(intent)
-                        finish()
-                    } else {
-                        Toast.makeText(this, "Login Failed", Toast.LENGTH_LONG).show()
+                auth.signInWithEmailAndPassword(email, password)
+                    .addOnCompleteListener(this) { task ->
+                        if (task.isSuccessful) {
+                            Toast.makeText(this, "Successfully Logged In", Toast.LENGTH_LONG).show()
+                            moveToDashboard()
+                        } else {
+                            Toast.makeText(this, "Login Failed", Toast.LENGTH_LONG).show()
+                        }
                     }
-                }
             }
         }
+    }
+
+    private fun moveToDashboard() {
+        val intent = Intent(this, DashboardActivity::class.java)
+        startActivity(intent)
+        finishAffinity()
     }
 }

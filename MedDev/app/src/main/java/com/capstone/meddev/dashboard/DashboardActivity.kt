@@ -39,7 +39,7 @@ class DashboardActivity : AppCompatActivity() {
         }
     }
 
-    fun logout() {
+    private fun logout() {
         FirebaseAuth.getInstance().signOut()
         Toast.makeText(this, "You're logout", Toast.LENGTH_LONG).show()
         startActivity(Intent(this, LoginActivity::class.java))

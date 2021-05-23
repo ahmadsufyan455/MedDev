@@ -28,11 +28,11 @@
                 android:text="Welcome, ">
             </TextView>
             <TextView
+                android:id="@+id/tvUsername"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:textColor="@color/white"
-                android:textSize="16sp"
-                android:text="John">
+                android:textSize="16sp" >
             </TextView>
         </LinearLayout>
 

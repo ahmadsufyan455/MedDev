@@ -11,6 +11,7 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.MedDev">
+        <activity android:name=".dashboard.DiseaseDetectionActivity"></activity>
         <activity android:name=".detection.PhotoSelectionActivity" />
         <activity android:name=".dashboard.DashboardActivity" />
         <activity android:name=".auth.login.LoginActivity" />

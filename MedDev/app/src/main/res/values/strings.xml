@@ -10,4 +10,6 @@
     <string name="has_account_q">Don\'t have an account?</string>
     <string name="username_hint">Username</string>
     <string name="have_an_account">Have an account ?</string>
+    <string name="ambil_foto">Ambil Foto</string>
+    <string name="unggah_foto">Unggah Foto</string>
 </resources>

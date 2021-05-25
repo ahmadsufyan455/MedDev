@@ -21,6 +21,10 @@ class DashboardActivity : AppCompatActivity() {
 
         getUsername()
 
+        binding.btnDiseaseDetection.setOnClickListener {
+            startActivity(Intent(this, DiseaseDetectionActivity::class.java))
+        }
+
         binding.btnLogout.setOnClickListener { logout() }
     }
 

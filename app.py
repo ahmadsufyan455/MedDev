@@ -5,20 +5,17 @@ from fastapi import FastAPI, File, UploadFile
 app = FastAPI()  
 
 
-@app.get('/')
-def index():
-    return {'message': 'Hello, World'}
+@app.get("/")
+def predict_image():
 
-@app.post('/api/predict')
-async def predict_image(file: bytes = File(...)):
-    #read file uploaded
-    image = read_image(file)
+    #read file from dir
+    image = read_image()
     #prepocessing image
     image = prepocess(image)
     #make prediction
     prediction = predict(image)
     
-    #print(prediction)
+    print(prediction)
 
     return prediction
 

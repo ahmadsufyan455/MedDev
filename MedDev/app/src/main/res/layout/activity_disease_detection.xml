@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     android:background="@color/green_bg"
     android:padding="16dp"
-    tools:context=".dashboard.DiseaseDetectionActivity">
+    tools:context=".detection.DiseaseDetectionActivity">
 
     <ImageView
         android:id="@+id/imgDisease"

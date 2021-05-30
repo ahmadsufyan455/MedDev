@@ -18,4 +18,6 @@
     <string name="result_label">Berdasarkan hasil analisa gambar, maka kemungkinan anda mengidap</string>
     <string name="katarak">Katarak</string>
     <string name="detail_penyakit">Detail Penyakit</string>
+    <string name="disease_detail">Detail Penyakit</string>
+    <string name="back_to_home">Kembali ke Home</string>
 </resources>

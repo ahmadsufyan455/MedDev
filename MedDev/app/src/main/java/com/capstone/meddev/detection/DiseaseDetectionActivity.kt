@@ -1,4 +1,4 @@
-package com.capstone.meddev.dashboard
+package com.capstone.meddev.detection
 
 import android.content.Intent
 import android.graphics.Bitmap
@@ -6,6 +6,7 @@ import android.net.Uri
 import android.os.Bundle
 import android.provider.MediaStore
 import androidx.appcompat.app.AppCompatActivity
+import com.capstone.meddev.dashboard.TFLiteHelper
 import com.capstone.meddev.databinding.ActivityDiseaseDetectionBinding
 import java.io.IOException
 

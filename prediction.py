@@ -4,10 +4,6 @@ import tensorflow as tf
 from PIL import Image, ImageOps
 import cv2
 
-
-model = None
-
-
 def load_model():
     model = tf.keras.models.load_model('my_model.hdf5')
     print("Model loaded")
@@ -33,6 +29,8 @@ def prepocess(image: Image.Image):
 
 
 def predict(image: np.ndarray):
+    global  pred_label_names
+
     class_names = ["Normal", "cataract", "glaucoma", "eye desease"]
     predictions = _model.predict(image)
     print(predictions)
@@ -42,6 +40,9 @@ def predict(image: np.ndarray):
     # When replaced with a label name
     pred_label_names = [class_names [x] for x in pred_labels]
     
+    return pred_label_names
+
+def result_desease():
     return pred_label_names
 
 

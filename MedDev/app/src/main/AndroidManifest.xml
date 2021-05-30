@@ -4,6 +4,10 @@
 
     <uses-permission android:name="android.permission.INTERNET" />
 
+    <uses-feature
+        android:name="android.hardware.camera"
+        android:required="true" />
+
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
@@ -11,7 +15,8 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.MedDev">
-        <activity android:name=".dashboard.DiseaseDetectionActivity"></activity>
+        <activity android:name=".dashboard.DetectionResultActivity" />
+        <activity android:name=".dashboard.DiseaseDetectionActivity" />
         <activity android:name=".detection.PhotoSelectionActivity" />
         <activity android:name=".dashboard.DashboardActivity" />
         <activity android:name=".auth.login.LoginActivity" />

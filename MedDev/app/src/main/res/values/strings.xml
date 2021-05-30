@@ -12,4 +12,10 @@
     <string name="have_an_account">Have an account ?</string>
     <string name="ambil_foto">Ambil Foto</string>
     <string name="unggah_foto">Unggah Foto</string>
+    <string name="deteksi">Deteksi</string>
+    <string name="lanjutkan">Lanjutkan</string>
+    <string name="kembali_ke_home">Kembali ke home</string>
+    <string name="result_label">Berdasarkan hasil analisa gambar, maka kemungkinan anda mengidap</string>
+    <string name="katarak">Katarak</string>
+    <string name="detail_penyakit">Detail Penyakit</string>
 </resources>

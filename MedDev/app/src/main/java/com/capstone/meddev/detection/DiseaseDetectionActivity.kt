@@ -1,4 +1,4 @@
-package com.capstone.meddev.dashboard
+package com.capstone.meddev.detection
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle

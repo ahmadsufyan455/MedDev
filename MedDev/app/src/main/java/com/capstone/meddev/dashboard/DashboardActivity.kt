@@ -6,6 +6,7 @@ import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.capstone.meddev.auth.login.LoginActivity
 import com.capstone.meddev.databinding.ActivityDashboardBinding
+import com.capstone.meddev.detection.DiseaseDetectionActivity
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.FirebaseFirestore
 

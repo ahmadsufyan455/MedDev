@@ -12,4 +12,6 @@
     <string name="have_an_account">Have an account ?</string>
     <string name="ambil_foto">Ambil Foto</string>
     <string name="unggah_foto">Unggah Foto</string>
+    <string name="disease_detail">Detail Penyakit</string>
+    <string name="back_to_home">Kembali ke Home</string>
 </resources>

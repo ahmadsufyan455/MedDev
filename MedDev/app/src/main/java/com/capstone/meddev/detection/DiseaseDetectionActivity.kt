@@ -13,11 +13,6 @@ import java.io.IOException
 class DiseaseDetectionActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityDiseaseDetectionBinding
-
-//    companion object {
-//        const val REQUEST_IMAGE_CAPTURE = 1
-//    }
-
     private lateinit var imageUri: Uri
     private lateinit var bitmap: Bitmap
 
@@ -28,14 +23,6 @@ class DiseaseDetectionActivity : AppCompatActivity() {
 
         val tfLiteHelper = TFLiteHelper(this)
         tfLiteHelper.init()
-
-//        binding.btnTakePhoto.setOnClickListener {
-//            dispatchTakePictureIntent()
-//        }
-
-//        binding.btnDetection.setOnClickListener {
-//            startActivity(Intent(this, DetectionResultActivity::class.java))
-//        }
 
         binding.btnUploadPhoto.setOnClickListener {
             val selectType = "image/*"
@@ -49,26 +36,9 @@ class DiseaseDetectionActivity : AppCompatActivity() {
 
         binding.btnDetection.setOnClickListener {
             tfLiteHelper.classifyImage(bitmap)
-            setResult(tfLiteHelper.showresult()!!)
+            setResult(tfLiteHelper.showResult()!!)
         }
     }
-
-//    private fun dispatchTakePictureIntent() {
-//        val takePictureIntent = Intent(MediaStore.ACTION_IMAGE_CAPTURE)
-//        try {
-//            startActivityForResult(takePictureIntent, REQUEST_IMAGE_CAPTURE)
-//        } catch (e: ActivityNotFoundException) {
-//            Log.e("DiseaseDetection", e.message.toString())
-//        }
-//    }
-//
-//    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
-//        super.onActivityResult(requestCode, resultCode, data)
-//        if (requestCode == REQUEST_IMAGE_CAPTURE && resultCode == RESULT_OK) {
-//            val imageBitmap = data?.extras?.get("data") as Bitmap
-//            binding.imgDisease.setImageBitmap(imageBitmap)
-//        }
-//    }
 
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
         super.onActivityResult(requestCode, resultCode, data)

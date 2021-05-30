@@ -18,6 +18,7 @@ import java.io.IOException
 import java.nio.MappedByteBuffer
 import java.nio.channels.FileChannel
 import java.util.*
+import kotlin.math.min
 
 class TFLiteHelper(private val context: Activity) {
 
@@ -27,21 +28,20 @@ class TFLiteHelper(private val context: Activity) {
     private var labels: List<String>? = null
     private var tflite: Interpreter? = null
 
-    private val tfliteModel: MappedByteBuffer? = null
     private var inputImageBuffer: TensorImage? = null
     private var outputProbabilityBuffer: TensorBuffer? = null
     private var probabilityProcessor: TensorProcessor? = null
 
-    private val IMAGE_MEAN = 0.0f
-    private val IMAGE_STD = 1.0f
+    private val imageMean = 0.0f
+    private val imageStd = 1.0f
 
-    private val PROBABILITY_MEAN = 0.0f
-    private val PROBABILITY_STD = 255.0f
+    private val probabilityMean = 0.0f
+    private val probabilityStd = 255.0f
 
     fun init() {
         try {
             val opt = Interpreter.Options()
-            tflite = Interpreter(loadmodelfile(context)!!, opt)
+            tflite = Interpreter(loadModelFile(context)!!, opt)
         } catch (e: Exception) {
             e.printStackTrace()
         }
@@ -52,8 +52,7 @@ class TFLiteHelper(private val context: Activity) {
         inputImageBuffer!!.load(bitmap)
 
         // Creates processor for the TensorImage.
-        val cropSize = Math.min(bitmap.width, bitmap.height)
-        // TODO(b/143564309): Fuse ops inside ImageProcessor.
+        val cropSize = min(bitmap.width, bitmap.height)
         val imageProcessor = ImageProcessor.Builder()
             .add(ResizeWithCropOrPadOp(cropSize, cropSize))
             .add(ResizeOp(imageSizeX, imageSizeY, ResizeOp.ResizeMethod.NEAREST_NEIGHBOR))
@@ -63,37 +62,39 @@ class TFLiteHelper(private val context: Activity) {
     }
 
     @Throws(IOException::class)
-    private fun loadmodelfile(activity: Activity?): MappedByteBuffer? {
-        val MODEL_NAME = "model.tflite"
-        val fileDescriptor = activity!!.assets.openFd(MODEL_NAME)
+    private fun loadModelFile(activity: Activity?): MappedByteBuffer? {
+        val modelName = "model.tflite"
+        val fileDescriptor = activity!!.assets.openFd(modelName)
         val inputStream = FileInputStream(fileDescriptor.fileDescriptor)
         val fileChannel = inputStream.channel
-        val startoffset = fileDescriptor.startOffset
+        val startOffset = fileDescriptor.startOffset
         val declaredLength = fileDescriptor.declaredLength
-        return fileChannel.map(FileChannel.MapMode.READ_ONLY, startoffset, declaredLength)
+        return fileChannel.map(FileChannel.MapMode.READ_ONLY, startOffset, declaredLength)
     }
 
     fun classifyImage(bitmap: Bitmap) {
         val imageTensorIndex = 0
-        val imageShape = tflite!!.getInputTensor(imageTensorIndex).shape() // {1, height, width, 3}
+        val imageShape = tflite!!.getInputTensor(imageTensorIndex).shape()
+
         imageSizeY = imageShape[1]
         imageSizeX = imageShape[2]
+
         val imageDataType = tflite!!.getInputTensor(imageTensorIndex).dataType()
         val probabilityTensorIndex = 0
-        val probabilityShape =
-            tflite!!.getOutputTensor(probabilityTensorIndex).shape() // {1, NUM_CLASSES}
+        val probabilityShape = tflite!!.getOutputTensor(probabilityTensorIndex).shape()
         val probabilityDataType = tflite!!.getOutputTensor(probabilityTensorIndex).dataType()
+
         inputImageBuffer = TensorImage(imageDataType)
         outputProbabilityBuffer =
             TensorBuffer.createFixedSize(probabilityShape, probabilityDataType)
-        probabilityProcessor = TensorProcessor.Builder().add(getPostprocessNormalizeOp()).build()
+        probabilityProcessor = TensorProcessor.Builder().add(getPostProcessNormalizeOp()).build()
         inputImageBuffer = loadImage(bitmap)
         tflite!!.run(inputImageBuffer!!.buffer, outputProbabilityBuffer!!.buffer.rewind())
     }
 
-    fun showresult(): List<String>? {
+    fun showResult(): List<String>? {
         labels = try {
-            FileUtil.loadLabels(context!!, "model.txt")
+            FileUtil.loadLabels(context, "model.txt")
         } catch (e: Exception) {
             e.printStackTrace()
             return null
@@ -112,11 +113,11 @@ class TFLiteHelper(private val context: Activity) {
         return result
     }
 
-    private fun getPreprocessNormalizeOp(): TensorOperator? {
-        return NormalizeOp(IMAGE_MEAN, IMAGE_STD)
+    private fun getPreprocessNormalizeOp(): TensorOperator {
+        return NormalizeOp(imageMean, imageStd)
     }
 
-    private fun getPostprocessNormalizeOp(): TensorOperator? {
-        return NormalizeOp(PROBABILITY_MEAN, PROBABILITY_STD)
+    private fun getPostProcessNormalizeOp(): TensorOperator {
+        return NormalizeOp(probabilityMean, probabilityStd)
     }
 }

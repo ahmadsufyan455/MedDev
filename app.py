@@ -1,4 +1,4 @@
-from prediction import predict,prepocess, read_image
+from prediction import predict,prepocess, read_image, result_desease
 import uvicorn
 from fastapi import FastAPI, File
 import json
@@ -16,9 +16,13 @@ async def Handle_form(eye_file : bytes = File(...)):
     img = read_image(eye_file)
     img = prepocess(img)
     prediction = predict(img)
-    print(prediction)
-    return {"Result": prediction}
+    return{"upload image success."}
 
+@app.get("/get_result")
+def predict_result():
+    result = result_desease()
+    return {"result": result}
+    
 @app.get("/article")
 def art():
     # Opening JSON file

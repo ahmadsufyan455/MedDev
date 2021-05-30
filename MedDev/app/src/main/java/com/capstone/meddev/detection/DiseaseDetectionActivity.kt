@@ -5,9 +5,14 @@ import android.graphics.Bitmap
 import android.net.Uri
 import android.os.Bundle
 import android.provider.MediaStore
+import android.view.View
 import androidx.appcompat.app.AppCompatActivity
 import com.capstone.meddev.dashboard.TFLiteHelper
 import com.capstone.meddev.databinding.ActivityDiseaseDetectionBinding
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.delay
+import kotlinx.coroutines.launch
 import java.io.IOException
 
 class DiseaseDetectionActivity : AppCompatActivity() {
@@ -34,9 +39,16 @@ class DiseaseDetectionActivity : AppCompatActivity() {
             startActivityForResult(Intent.createChooser(intent, selectPicture), 12)
         }
 
+        binding.tvResult.text = "Hasil prediksi"
+
         binding.btnDetection.setOnClickListener {
             tfLiteHelper.classifyImage(bitmap)
-            setResult(tfLiteHelper.showResult()!!)
+            CoroutineScope(Dispatchers.Main).launch {
+                binding.tvResult.text = "Sedang melakukan prediksi..."
+                delay(2000L)
+                binding.tvLabel.visibility = View.VISIBLE
+                setResult(tfLiteHelper.showResult()!!)
+            }
         }
     }
 

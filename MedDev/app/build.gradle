@@ -59,4 +59,6 @@ dependencies {
     implementation 'org.tensorflow:tensorflow-lite-task-text:0.1.0'
     implementation 'org.tensorflow:tensorflow-lite-support:0.1.0'
     implementation 'org.tensorflow:tensorflow-lite:2.4.0'
+
+    implementation 'org.jetbrains.kotlinx:kotlinx-coroutines-android:1.4.3'
 }

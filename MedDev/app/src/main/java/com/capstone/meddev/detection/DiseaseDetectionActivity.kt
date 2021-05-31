@@ -26,6 +26,9 @@ class DiseaseDetectionActivity : AppCompatActivity() {
         binding = ActivityDiseaseDetectionBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
+        supportActionBar?.title = "Deteksi Penyakit"
+        supportActionBar?.setDisplayHomeAsUpEnabled(true)
+
         val tfLiteHelper = TFLiteHelper(this)
         tfLiteHelper.init()
 
@@ -70,5 +73,10 @@ class DiseaseDetectionActivity : AppCompatActivity() {
         for (entry in entries) {
             binding.tvResult.append(entry)
         }
+    }
+
+    override fun onSupportNavigateUp(): Boolean {
+        finish()
+        return super.onSupportNavigateUp()
     }
 }

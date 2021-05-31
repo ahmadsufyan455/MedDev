@@ -54,6 +54,27 @@ class DiseaseDetectionActivity : AppCompatActivity() {
                     delay(2000L)
                     binding.tvLabel.visibility = View.VISIBLE
                     setResult(tfLiteHelper.showResult()!!)
+                    if (binding.tvResult.text.toString() == "cataract") {
+                        binding.tvResult.setOnClickListener {
+                            startActivity(
+                                Intent(
+                                    this@DiseaseDetectionActivity,
+                                    DiseaseDetailActivity::class.java
+                                ).apply {
+                                    putExtra(DiseaseDetailActivity.EXTRA_CATARACT, urlCataract)
+                                })
+                        }
+                    } else if (binding.tvResult.text.toString() == "glaucoma") {
+                        binding.tvResult.setOnClickListener {
+                            startActivity(
+                                Intent(
+                                    this@DiseaseDetectionActivity,
+                                    DiseaseDetailActivity::class.java
+                                ).apply {
+                                    putExtra(DiseaseDetailActivity.EXTRA_GLAUCOMA, urlGlaucoma)
+                                })
+                        }
+                    }
                 }
             } catch (e: Exception) {
                 Toast.makeText(this, "Unggah foto mata terlebih dahulu", Toast.LENGTH_SHORT).show()
@@ -84,5 +105,10 @@ class DiseaseDetectionActivity : AppCompatActivity() {
     override fun onSupportNavigateUp(): Boolean {
         finish()
         return super.onSupportNavigateUp()
+    }
+
+    companion object {
+        const val urlCataract = "https://www.halodoc.com/kesehatan/katarak"
+        const val urlGlaucoma = "https://www.halodoc.com/kesehatan/glaukoma"
     }
 }

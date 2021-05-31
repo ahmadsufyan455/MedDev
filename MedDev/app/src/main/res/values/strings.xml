@@ -23,4 +23,5 @@
     <string name="deteksi_penyakit">Deteksi Penyakit</string>
     <string name="hasil_prediksi">Hasil Prediksi</string>
     <string name="prediksi_progres">Sedang melakukan prediksi...</string>
+    <string name="informasi_penyakit">Informasi Penyakit</string>
 </resources>

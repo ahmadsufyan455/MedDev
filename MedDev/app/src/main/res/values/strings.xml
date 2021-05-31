@@ -20,4 +20,7 @@
     <string name="detail_penyakit">Detail Penyakit</string>
     <string name="disease_detail">Detail Penyakit</string>
     <string name="back_to_home">Kembali ke Home</string>
+    <string name="deteksi_penyakit">Deteksi Penyakit</string>
+    <string name="hasil_prediksi">Hasil Prediksi</string>
+    <string name="prediksi_progres">Sedang melakukan prediksi...</string>
 </resources>

@@ -6,7 +6,9 @@ import android.net.Uri
 import android.os.Bundle
 import android.provider.MediaStore
 import android.view.View
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
+import com.capstone.meddev.R
 import com.capstone.meddev.dashboard.TFLiteHelper
 import com.capstone.meddev.databinding.ActivityDiseaseDetectionBinding
 import kotlinx.coroutines.CoroutineScope
@@ -26,7 +28,7 @@ class DiseaseDetectionActivity : AppCompatActivity() {
         binding = ActivityDiseaseDetectionBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        supportActionBar?.title = "Deteksi Penyakit"
+        supportActionBar?.title = getString(R.string.deteksi_penyakit)
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
 
         val tfLiteHelper = TFLiteHelper(this)
@@ -42,15 +44,19 @@ class DiseaseDetectionActivity : AppCompatActivity() {
             startActivityForResult(Intent.createChooser(intent, selectPicture), 12)
         }
 
-        binding.tvResult.text = "Hasil prediksi"
+        binding.tvResult.text = getString(R.string.hasil_prediksi)
 
         binding.btnDetection.setOnClickListener {
-            tfLiteHelper.classifyImage(bitmap)
-            CoroutineScope(Dispatchers.Main).launch {
-                binding.tvResult.text = "Sedang melakukan prediksi..."
-                delay(2000L)
-                binding.tvLabel.visibility = View.VISIBLE
-                setResult(tfLiteHelper.showResult()!!)
+            try {
+                tfLiteHelper.classifyImage(bitmap)
+                CoroutineScope(Dispatchers.Main).launch {
+                    binding.tvResult.text = getString(R.string.prediksi_progres)
+                    delay(2000L)
+                    binding.tvLabel.visibility = View.VISIBLE
+                    setResult(tfLiteHelper.showResult()!!)
+                }
+            } catch (e: Exception) {
+                Toast.makeText(this, "Unggah foto mata terlebih dahulu", Toast.LENGTH_SHORT).show()
             }
         }
     }

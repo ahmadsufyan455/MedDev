@@ -9,7 +9,7 @@ import android.view.View
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.capstone.meddev.R
-import com.capstone.meddev.dashboard.TFLiteHelper
+import com.capstone.meddev.helper.TFLiteHelper
 import com.capstone.meddev.databinding.ActivityDiseaseDetectionBinding
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers

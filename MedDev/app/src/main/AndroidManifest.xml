@@ -15,7 +15,7 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.MedDev">
-        <activity android:name=".dashboard.DetectionResultActivity" />
+        <activity android:name=".dashboard.article.ArticleActivity"></activity>
         <activity android:name=".detection.DiseaseResultActivity" />
         <activity android:name=".detection.DiseaseDetailActivity" />
         <activity android:name=".detection.DiseaseDetectionActivity" />

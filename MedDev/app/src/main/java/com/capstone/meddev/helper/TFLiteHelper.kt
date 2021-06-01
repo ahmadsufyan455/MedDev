@@ -1,4 +1,4 @@
-package com.capstone.meddev.dashboard
+package com.capstone.meddev.helper
 
 import android.app.Activity
 import android.graphics.Bitmap
@@ -26,7 +26,7 @@ class TFLiteHelper(private val context: Activity) {
     private var imageSizeY = 0
 
     private var labels: List<String>? = null
-    private var tflite: Interpreter? = null
+    private var tfLite: Interpreter? = null
 
     private var inputImageBuffer: TensorImage? = null
     private var outputProbabilityBuffer: TensorBuffer? = null
@@ -41,7 +41,7 @@ class TFLiteHelper(private val context: Activity) {
     fun init() {
         try {
             val opt = Interpreter.Options()
-            tflite = Interpreter(loadModelFile(context)!!, opt)
+            tfLite = Interpreter(loadModelFile(context)!!, opt)
         } catch (e: Exception) {
             e.printStackTrace()
         }
@@ -74,22 +74,22 @@ class TFLiteHelper(private val context: Activity) {
 
     fun classifyImage(bitmap: Bitmap) {
         val imageTensorIndex = 0
-        val imageShape = tflite!!.getInputTensor(imageTensorIndex).shape()
+        val imageShape = tfLite!!.getInputTensor(imageTensorIndex).shape()
 
         imageSizeY = imageShape[1]
         imageSizeX = imageShape[2]
 
-        val imageDataType = tflite!!.getInputTensor(imageTensorIndex).dataType()
+        val imageDataType = tfLite!!.getInputTensor(imageTensorIndex).dataType()
         val probabilityTensorIndex = 0
-        val probabilityShape = tflite!!.getOutputTensor(probabilityTensorIndex).shape()
-        val probabilityDataType = tflite!!.getOutputTensor(probabilityTensorIndex).dataType()
+        val probabilityShape = tfLite!!.getOutputTensor(probabilityTensorIndex).shape()
+        val probabilityDataType = tfLite!!.getOutputTensor(probabilityTensorIndex).dataType()
 
         inputImageBuffer = TensorImage(imageDataType)
         outputProbabilityBuffer =
             TensorBuffer.createFixedSize(probabilityShape, probabilityDataType)
         probabilityProcessor = TensorProcessor.Builder().add(getPostProcessNormalizeOp()).build()
         inputImageBuffer = loadImage(bitmap)
-        tflite!!.run(inputImageBuffer!!.buffer, outputProbabilityBuffer!!.buffer.rewind())
+        tfLite!!.run(inputImageBuffer!!.buffer, outputProbabilityBuffer!!.buffer.rewind())
     }
 
     fun showResult(): List<String>? {

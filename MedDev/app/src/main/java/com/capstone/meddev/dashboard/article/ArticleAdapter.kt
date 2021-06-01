@@ -1,5 +1,6 @@
 package com.capstone.meddev.dashboard.article
 
+import android.content.Intent
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
@@ -41,6 +42,13 @@ class ArticleAdapter : RecyclerView.Adapter<ArticleAdapter.ViewHolder>() {
             Picasso.get()
                 .load(article.url)
                 .into(binding.articleImageImg)
+
+            itemView.setOnClickListener {
+                val intent = Intent(itemView.context, DetailArticleActivity::class.java).apply {
+                    putExtra("post_url", article.post_url)
+                }
+                it.context.startActivity(intent)
+            }
         }
     }
 }

@@ -3,7 +3,7 @@ import time
 import json
 
 def nearby_search(location):
-    API_KEY = 'AIzaSyCAWBx8-LrhpAUoD7w4GslaGw5cApUqv7o'
+    API_KEY = '<your API Key'
 
     #define the client
     gmaps = googlemaps.Client(API_KEY)

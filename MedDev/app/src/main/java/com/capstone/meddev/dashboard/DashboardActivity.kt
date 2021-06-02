@@ -6,6 +6,7 @@ import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.capstone.meddev.auth.login.LoginActivity
 import com.capstone.meddev.dashboard.article.ArticleActivity
+import com.capstone.meddev.dashboard.nearby.NearbyActivity
 import com.capstone.meddev.databinding.ActivityDashboardBinding
 import com.capstone.meddev.detection.DiseaseDetectionActivity
 import com.google.firebase.auth.FirebaseAuth
@@ -31,6 +32,10 @@ class DashboardActivity : AppCompatActivity() {
 
         binding.btnHealthInformation.setOnClickListener {
             startActivity(Intent(this, ArticleActivity::class.java))
+        }
+
+        binding.btnHealthFacilitation.setOnClickListener{
+            startActivity(Intent(this, NearbyActivity::class.java))
         }
 
         binding.btnLogout.setOnClickListener { logout() }

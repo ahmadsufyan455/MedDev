@@ -30,8 +30,8 @@ class NearbyActivity : AppCompatActivity() {
 
         viewModel.setData()
         viewModel.getData().observe(this, {
-            if (it.nearbyPlaces != null) {
-                nearbyAdapter.setData(it.nearbyPlaces)
+            if (it != null) {
+                nearbyAdapter.setData(it.nearbyPlaces?.get(0)!!)
                 binding.progressBar.visibility = View.GONE
             }
         })

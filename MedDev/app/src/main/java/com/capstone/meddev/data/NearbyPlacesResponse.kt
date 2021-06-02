@@ -6,7 +6,6 @@ import kotlinx.android.parcel.Parcelize
 
 @Parcelize
 data class NearbyPlacesResponse(
-
 	@field:SerializedName("Nearby_places")
-	val nearbyPlaces: List<NearbyPlacesItem?>? = null
+	val nearbyPlaces: List<NearbyPlacesItem>? = null
 ) : Parcelable

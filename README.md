@@ -61,7 +61,7 @@ the steps to create an ML model
 
 **Deploy and run Hello World on App Engine**
 To deploy your app to the App Engine standard environment:
-Deploy the Hello World app by running the following command from the your app local directory:
+how to deploy:
 1. gcloud app deploy <name_your_file.yaml>
 2. choose the region where the server is made, try to be close to your location
 

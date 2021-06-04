@@ -11,7 +11,7 @@
     <androidx.cardview.widget.CardView
         android:id="@+id/imgCard"
         android:layout_width="match_parent"
-        android:layout_height="300dp"
+        android:layout_height="270dp"
         app:cardCornerRadius="20dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -69,7 +69,7 @@
         android:id="@+id/btnDetection"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="34dp"
+        android:layout_marginBottom="16dp"
         android:background="@drawable/rounded_button_red_bg"
         android:text="@string/deteksi"
         android:textColor="@color/white"

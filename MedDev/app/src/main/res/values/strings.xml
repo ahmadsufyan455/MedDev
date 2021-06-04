@@ -1,3 +1,32 @@
 <resources>
     <string name="app_name">MedDev</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+
+    <string name="login_label">Login</string>
+    <string name="email_hint">Email</string>
+    <string name="password_hint">Password</string>
+    <string name="register_label">Register</string>
+    <string name="has_account_q">Don\'t have an account?</string>
+    <string name="username_hint">Username</string>
+    <string name="have_an_account">Have an account ?</string>
+    <string name="ambil_foto">Ambil Foto</string>
+    <string name="unggah_foto">Unggah Foto</string>
+    <string name="deteksi">Deteksi</string>
+    <string name="lanjutkan">Lanjutkan</string>
+    <string name="kembali_ke_home">Kembali ke home</string>
+    <string name="result_label">Berdasarkan hasil analisa gambar, maka kemungkinan anda mengidap</string>
+    <string name="katarak">Katarak</string>
+    <string name="detail_penyakit">Detail Penyakit</string>
+    <string name="disease_detail">Detail Penyakit</string>
+    <string name="back_to_home">Kembali ke Home</string>
+    <string name="deteksi_penyakit">Deteksi Penyakit</string>
+    <string name="hasil_prediksi">Hasil Prediksi</string>
+    <string name="prediksi_progres">Sedang melakukan prediksi...</string>
+    <string name="informasi_penyakit">Informasi Penyakit</string>
+    <string name="welcome">Welcome,</string>
+    <string name="artikel_kesehatan">Artikel Kesehatan</string>
+    <string name="artikel_detail">Detail Artikel</string>
+    <string name="fasilitas_kesehatan">Fasilitas Kesehatan Terdekat</string>
+    <string name="tagline">Eye Disease Detection</string>
 </resources>

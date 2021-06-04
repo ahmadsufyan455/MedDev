@@ -1,0 +1,4 @@
+cataract
+normal
+glaucoma
+eye disease

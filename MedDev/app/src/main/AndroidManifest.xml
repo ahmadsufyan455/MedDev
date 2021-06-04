@@ -15,7 +15,8 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.MedDev">
-        <activity android:name=".dashboard.nearby.NearbyActivity"></activity>
+        <activity android:name=".MainActivity" />
+        <activity android:name=".dashboard.nearby.NearbyActivity" />
         <activity android:name=".dashboard.article.DetailArticleActivity" />
         <activity android:name=".dashboard.article.ArticleActivity" />
         <activity android:name=".detection.DiseaseResultActivity" />
@@ -23,7 +24,7 @@
         <activity android:name=".detection.DiseaseDetectionActivity" />
         <activity android:name=".dashboard.DashboardActivity" />
         <activity android:name=".auth.login.LoginActivity" />
-        <activity android:name=".MainActivity">
+        <activity android:name=".SplashScreenActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

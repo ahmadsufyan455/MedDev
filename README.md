@@ -11,10 +11,10 @@ Documentation
 8. Using retrofit to get data from API
 
 **Machine Learning**
-System Requirement
-Working on : Google Colab
-Tensorflow : 2.5.0
-Dataset : https://www.kaggle.com/jr2ngb/cataractdataset
+- System Requirement
+- Working on : Google Colab
+- Tensorflow : 2.5.0
+- Dataset : https://www.kaggle.com/jr2ngb/cataractdataset
 
 the steps to create an ML model
 1. Check version tensorflow

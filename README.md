@@ -1,9 +1,9 @@
 # MedDev
 
 **System Requirement**
-Working on  : Google Colab
-Tensorflow  : 2.5.0
-Dataset     : https://www.kaggle.com/jr2ngb/cataractdataset
+- Working on  : Google Colab
+- Tensorflow  : 2.5.0
+- Dataset     : https://www.kaggle.com/jr2ngb/cataractdataset
 
 **the steps to create an ML model**
 1. Check version tensorflow

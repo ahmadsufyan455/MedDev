@@ -16,4 +16,4 @@ Deploy the Hello World app by running the following command from the your app lo
 
 **API nearby location**
 1. First you have to enable Place API in the GPC API library
-2. After that klik in credensial and make new key for you API<you can find Credensial in same menu of API Library
+2. After that klik in credential and make new key for you API<you can find Credential in same menu of API Library
